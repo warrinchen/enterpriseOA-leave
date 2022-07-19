@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!--驼峰命名转换-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <environments default="development">
+        <!--配置环境，不同的环境不同的id名字-->
+        <environment id="development">
+            <!--采用JDBC方式对数据库事务进行commit/rollback-->
+            <transactionManager type="JDBC"/>
+            <!--采用MyBatis自带的连接池方式管理数据库连接
+            <dataSource type="POOLED">-->
+            <!--MyBatis整合Druid-->
+            <dataSource type="com.exp.oa.datasource.DruidDataSourceFactory">
+                <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/enterprise-oa?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai&amp;allowPublicKeyRetrieval=true"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+                <property name="initialSize" value="10"/>
+                <property name="maxActive" value="10"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="mappers/test.xml"/>
+        <mapper resource="mappers/user.xml"/>
+        <mapper resource="mappers/rbac.xml"/>
+        <mapper resource="mappers/employee.xml"/>
+        <mapper resource="mappers/department.xml"/>
+        <mapper resource="mappers/leave_form.xml"/>
+        <mapper resource="mappers/process_flow.xml"/>
+        <mapper resource="mappers/notice.xml"/>
+    </mappers>
+
+</configuration>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace必须和包名一致-->
+<mapper namespace="com.exp.oa.dao.NoticeDao">
+    <!-- id必须和方法名一致 类型一致-->
+    <insert id="insert" parameterType="com.exp.oa.entity.Notice"
+        useGeneratedKeys="true" keyProperty="noticeId" keyColumn="notice_id">
+        INSERT INTO sys_notice (receiver_id, content, create_time)
+        VALUES (#{receiverId}, #{content}, #{createTime})
+    </insert>
+
+    <select id="selectByRecevierId" parameterType="Long" resultType="com.exp.oa.entity.Notice">
+        select * from sys_notice where receiver_id = #{value} order by create_time desc limit 0, 100
+    </select>
+</mapper>

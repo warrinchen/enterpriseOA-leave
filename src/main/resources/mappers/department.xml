@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <!--namespace必须和包名一致-->
+<mapper namespace="com.exp.oa.dao.DepartmentDao">
+    <!-- id必须和方法名一致 类型一致-->
+    <select id="selectById" parameterType="Long" resultType="com.exp.oa.entity.Department">
+        select *
+        from adm_department
+        where department_id = #{value };
+    </select>
+</mapper>
